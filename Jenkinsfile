@@ -79,7 +79,7 @@ pipeline {
           script {
             sh '''
               heroku container:login
-              heroku create $STAGING || echo "project already exist"
+              heroku create $STAGING || echo "project already exist sorry"
               heroku container:push -a $STAGING web
               heroku container:release -a $STAGING web
             '''
