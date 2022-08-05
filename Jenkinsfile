@@ -1,8 +1,9 @@
 /* import shared library */
 @Library('shared-library')_
+
 pipeline {
      environment {
-       ID_DOCKER = "maissane0508"
+       ID_DOCKER = "choco1992"
        IMAGE_NAME = "alpinehelloworld"
        IMAGE_TAG = "latest"
 //       PORT_EXPOSED = "80" à paraméter dans le job
@@ -81,7 +82,7 @@ pipeline {
           script {
             sh '''
               heroku container:login
-              heroku create $STAGING || echo "project already exist sorry"
+              heroku create $STAGING || echo "project already exist"
               heroku container:push -a $STAGING web
               heroku container:release -a $STAGING web
             '''
@@ -117,6 +118,6 @@ pipeline {
         slackNotifier currentBuild.result
       }
     }  
-  }     
-  
+  }  
+     
 }
